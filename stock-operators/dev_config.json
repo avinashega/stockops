@@ -1,0 +1,15 @@
+{
+    "http": {
+        "port": 8000,
+        "host": "0.0.0.0",
+        "cookieSecret": ")*imfkdosdfsd",
+        "sessionSecret":"*(h0jisadnas09"
+     },
+
+    "stripe":{
+    	"API_URL": "schedugram-test.chargebee.com/api/v1/",
+    	"secretKey": "sk_test_wDdWz6paAu1IHKJywADrz6oU",
+    	"publishableKey": "pk_test_RASuknKviBTKlwOgAuGqrBTP",
+    	"currency":"usd"
+    }
+}

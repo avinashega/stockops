@@ -1,0 +1,34 @@
+ {
+  "name": "stock-operators",
+  "private": true,
+  "version": "0.1.1",
+  "author": "Avinash Ega <avinash.ega@gmail.com>",
+  "description": "Capture Stripe Charges",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "express-hbs": "*",
+    "express-validator": "*",
+    "connect-redis": "*",
+    "redis-url": "*",
+    "less-middleware": "*",
+    "underscore": "*",
+    "request": "*",
+    "validator": "*",
+    "q": ">=0.9",
+    "mongoskin": ">=0.6",
+    "getconfig": "*",
+    "agenda": "*",
+    "aws-sdk": "*",
+    "stripe": "*"
+  },
+  "devDependencies": {
+    "debug": "*"
+  },
+  "engines": {
+    "node": "0.10.*",
+    "npm": "1.2.*"
+  }
+}
