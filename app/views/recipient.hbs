@@ -1,0 +1,79 @@
+{{!< main}}
+<br />
+<div class="main">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-8 col-md-push-1 col-xs-12">
+                <div class="widget stacked">
+                    <div class="widget-header">
+                        <h3>Add Recipients</h3>
+                    </div>
+                    <div class="widget-content">
+                        <div class="row">
+                            <form action="/recipients/add" method="post" role="b-ajaxForm" autocomplete="off">
+                                <h4>Recipient Information</h4>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Full name</label> <input type="text" name="name"
+                                        autofocus required class="form-control" placeholder="First Middle Last">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Type</label>
+                                    <div class="bfh-selectbox" data-name="type" id="type" data-value="">
+                                        <div data-value="">Select a Type</div>
+                                        <div data-value="individual">Individual</div>
+                                        <div data-value="corporation">Corporation</div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Tax ID</label> <input type="text"
+                                        name="taxId" required class="form-control"
+                                        placeholder="optional(SSN or EIN)">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Email</label> <input type="email"
+                                        name="email" required class="form-control"
+                                        placeholder="xyz@example.com">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Description</label> <input type="text"
+                                        name="description" required class="form-control"
+                                        placeholder="optional">
+                                </div>
+                                <div class="clearfix"></div>
+                                <h4>Bank Account Information</h4>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Account number</label> <input
+                                        type="text" name="accountNumber" class="form-control"
+                                        placeholder="optional">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Routing number</label> <input
+                                        type="text" name="routingNumber" class="form-control"
+                                        placeholder="optional">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Country</label> <input type="text"
+                                        name="country" class="form-control" placeholder="optional">
+                                </div>
+                                <div class="clearfix"></div>
+                                <button type="submit"
+                                    class="btn btn-lg btn-success btn-block b-ajaxForm__submitButton"
+                                    autocomplete="off">Add Recipient</button>
+
+                                <label class="help-block text-danger b-ajaxForm__errorMessage"></label>
+                                <label
+                                    class="help-block text-success b-ajaxForm__successMessage"></label>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

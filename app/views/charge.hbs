@@ -1,0 +1,134 @@
+{{!< main}}
+<br />
+<div class="main">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-8 col-md-push-1 col-xs-12">
+				<div class="widget stacked">
+					<div class="widget-header">
+						<h3>Capture Charges</h3>
+					</div>
+					<div class="widget-content">
+						<div class="row">
+							<form class="b-chargeList__addForm" action="/charges/add"
+								method="post" role="b-ajaxForm" autocomplete="off">
+								<h4>Card Information</h4>
+								<div class="form-group col-md-6">
+									<label class="control-label">Card number
+										(Visa/Mastercard/Amex)</label> <input type="text" name="cardNumber"
+										autofocus required class="form-control credit_card_number">
+								</div>
+								<div class="form-group col-md-6">
+									<label class="control-label">CVC</label> <input type="text"
+										name="cvc" required class="form-control credit_card_cvc">
+								</div>
+								<div class="clearfix"></div>
+								<div class="form-group col-md-6">
+									<label class="control-label">Expiry</label> <input type="text"
+										name="expiry" required class="form-control credit_card_expiry"
+										placeholder="Expiry: MM/YYYY">
+								</div>
+								<div class="form-group col-md-6">
+									<label class="control-label">Phone number</label> <input
+										type="text" name="phoneNumber" required
+										class="form-control phone_number" placeholder="Phone number">
+								</div>
+								<div class="clearfix"></div>
+								<div class="form-group col-md-6">
+									<label class="control-label">Email</label> <input type="email"
+										name="email" required class="form-control"
+										placeholder="xyz@example.com">
+								</div>
+								<div class="form-group col-md-6">
+									<label class="control-label">Select a Product</label>
+									<div class="bfh-selectbox" data-name="product" id="product"
+										data-value="">
+										<div data-value="">Select a Product...</div>
+										<div data-value="a">Product A</div>
+										<div data-value="b">Product B</div>
+										<div data-value="c">Product C</div>
+										<div data-value="d">Product D</div>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+								<h4>Billing Info</h4>
+								<div class="form-group col-md-6">
+									<label class="control-label">Address Line 1</label> <input
+										type="text" name="addressLine1" class="form-control"
+										placeholder="optional">
+								</div>
+								<div class="form-group col-md-6">
+									<label class="control-label">Address Line 2</label> <input
+										type="text" name="addressLine2" class="form-control"
+										placeholder="optional">
+								</div>
+								<div class="clearfix"></div>
+								<div class="form-group col-md-6">
+									<label class="control-label">City</label> <input type="text"
+										name="city" class="form-control" placeholder="optional">
+								</div>
+								<div class="form-group col-md-6">
+									<label class="control-label">State</label> <input type="text"
+										name="state" class="form-control" placeholder="optional">
+								</div>
+								<div class="clearfix"></div>
+								<div class="form-group col-md-6">
+									<label class="control-label">Zip</label> <input type="text"
+										name="zip" class="form-control" placeholder="optional">
+								</div>
+								<div class="form-group col-md-6">
+									<label class="control-label">Country</label> <input type="text"
+										name="country" class="form-control" placeholder="optional">
+								</div>
+								<div class="clearfix"></div>
+								<h4>Shipping Info</h4>
+								<div class="form-group col-md-6">
+									<label class="control-label">Address Line 1</label> <input
+										type="text" name="s_addressLine1" class="form-control"
+										placeholder="optional">
+								</div>
+								<div class="form-group col-md-6">
+									<label class="control-label">Address Line 2</label> <input
+										type="text" name="s_addressLine2" class="form-control"
+										placeholder="optional">
+								</div>
+								<div class="clearfix"></div>
+								<div class="form-group col-md-6">
+									<label class="control-label">City</label> <input type="text"
+										name="s_city" class="form-control" placeholder="optional">
+								</div>
+								<div class="form-group col-md-6">
+									<label class="control-label">State</label> <input type="text"
+										name="s_state" class="form-control" placeholder="optional">
+								</div>
+								<div class="clearfix"></div>
+								<div class="form-group col-md-6">
+									<label class="control-label">Zip</label> <input type="text"
+										name="s_zip" class="form-control" placeholder="optional">
+								</div>
+								<div class="form-group col-md-6">
+									<label class="control-label">Country</label> <input type="text"
+										name="s_country" class="form-control" placeholder="optional">
+								</div>
+								<div class="clearfix"></div>
+								<button type="submit"
+									class="btn btn-lg btn-success btn-block b-ajaxForm__submitButton"
+									autocomplete="off">Create Charge</button>
+
+								<label class="help-block text-danger b-ajaxForm__errorMessage"></label>
+								<label
+									class="help-block text-success b-ajaxForm__successMessage"></label>
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+{{#contentFor 'footerscripts'}}
+<script type='text/javascript'>$(function() {$("button[type='submit']").prop("disabled", true);$("input.credit_card_number").formance("format_credit_card_number");$("input.credit_card_number").formance("validate_credit_card_number");$("input.credit_card_number").on( 'keyup change blur', function (event) {if ( $(this).formance('validate_credit_card_number') ){$(this).css('border-color','green');$("button[type='submit']").prop("disabled", false);} else{ $(this).css('border-color','red');$("button[type='submit']").prop("disabled", true);}});$("input.credit_card_expiry").formance("format_credit_card_expiry");$("input.credit_card_expiry").formance("validate_credit_card_expiry");$("input.credit_card_expiry").on( 'keyup change blur', function (event) {if ( $(this).formance('validate_credit_card_expiry') ){$(this).css('border-color','green');$("button[type='submit']").prop("disabled", false);} else{ $(this).css('border-color','red');$("button[type='submit']").prop("disabled", true);}});$("input.credit_card_cvc").formance("validate_credit_card_cvc");$("input.credit_card_cvc").on( 'keyup change blur', function (event) {if ( $(this).formance('validate_credit_card_cvc') ){$(this).css('border-color','green');$("button[type='submit']").prop("disabled", false);} else{ $(this).css('border-color','red');$("button[type='submit']").prop("disabled", true);}});});</script>
+{{/contentFor}}

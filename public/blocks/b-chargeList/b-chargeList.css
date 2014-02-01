@@ -1,0 +1,11 @@
+.b-chargeList__addForm {
+    display: none;
+}
+
+.b-chargeList__addBlock_open .b-chargeList__addForm {
+    display: block;
+}
+
+.b-chargeList__addBlock_open .b-chargeList__addButton{
+    display: none;
+}

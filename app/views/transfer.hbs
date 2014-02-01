@@ -1,0 +1,55 @@
+{{!< main}}
+<br />
+<div class="main">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-8 col-md-push-1 col-xs-12">
+				<div class="widget stacked">
+					<div class="widget-header">
+						<h3>Create Transfers</h3>
+					</div>
+					<div class="widget-content">
+						<div class="row">
+							<form action="/transfers/add" method="post" role="b-ajaxForm"
+								autocomplete="off">
+								<div class="form-group col-md-6">
+									<label class="control-label">Amount</label> <input type="text"
+										name="amount" autofocus required class="form-control"
+										placeholder="in USD">
+								</div>
+								<div class="form-group col-md-6">
+									<label class="control-label">Recipient</label>
+									<div class="bfh-selectbox" data-name="plan">
+									<div data-value="">Select a Recipient</div>
+										{{#each recipients}}
+										<div data-value="{{id}}">{{name}}</div>
+										{{/each}}
+									</div>
+								</div>
+								<div class="clearfix"></div>
+
+								<div class="form-group col-md-6">
+									<label class="control-label">Description</label> <input
+										type="text" name="description" required class="form-control"
+										placeholder="optional">
+								</div>
+								<div class="clearfix"></div>
+
+								<button type="submit"
+									class="btn btn-lg btn-success btn-block b-ajaxForm__submitButton"
+									autocomplete="off">Create Transfer</button>
+
+								<label class="help-block text-danger b-ajaxForm__errorMessage"></label>
+								<label
+									class="help-block text-success b-ajaxForm__successMessage"></label>
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>

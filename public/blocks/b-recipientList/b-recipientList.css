@@ -1,0 +1,11 @@
+.b-recipientList__addForm {
+    display: block;
+}
+
+.b-recipientList__addBlock_open .b-recipientList__addForm {
+    display: block;
+}
+
+.b-recipientList__addBlock_open .b-recipientList__addButton{
+    display: none;
+}

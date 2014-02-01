@@ -1,0 +1,11 @@
+.b-transferList__addForm {
+    display: block;
+}
+
+.b-transferList__addBlock_open .b-transferList__addForm {
+    display: block;
+}
+
+.b-transferList__addBlock_open .b-transferList__addButton{
+    display: none;
+}
