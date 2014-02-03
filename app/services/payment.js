@@ -44,6 +44,8 @@ module.exports = {
 						charge.product = params.product;
 						charge.email = params.email;
 						charge.phoneNumber = params.phoneNumber;
+						charge.amount = parseInt(params.amount);
+						charge.name = params.name;
 						deferred.resolve(q.nbind(charges.save, charges)(charge));
 					}
 				});
