@@ -4,8 +4,8 @@ var express = require('express'),
     path = require('path'),
     app = express();
 
-var port    = config.http.port || 8000;
-var ipaddr = config.http.host;
+var port    = process.env.PORT || 8000;
+var ipaddr = process.env.HOST || config.http.host;
 
 app.configure('development', function () {
     app.use(express.logger('dev'));

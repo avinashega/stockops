@@ -19,7 +19,7 @@ if (cluster.isMaster) {
 
 } else {
         console.log('$$$ start http server: ' + cluster.worker.id);
-        console.log('$$$ start http server at: ' + config.http.host + ':' + config.http.port);
+        console.log('$$$ start http server at: ' + config.http.host + ':' + process.env.PORT || config.http.port);
         require('./app/web-http');
 }
 
