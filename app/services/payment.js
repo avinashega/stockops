@@ -63,40 +63,56 @@ module.exports = {
 			return deferred.promise;
 		},
 		
-		createRecipient: function(req) {
+		createRecipient: function(params) {
 			var deferred = q.defer();
 			stripe.recipients.create({
-				  name: req.body.name,
-				  type: req.body.type, //"individual" or "corporation"
-				  bank:{
-					  country: "us",
-					  routing_number: req.body.routing_number,
-					  account_number: req.body.account_number
-				  }				  
+				  name: params.name,
+				  type: params.type, //"individual" or "corporation"
+				  bank_account:{
+					  country: "US",
+					  routing_number: params.routingNumber,
+					  account_number: params.accountNumber
+				  },
+				  //tax_id: params.taxId,
+				  email: params.email,
+				  description: params.description
 				}, function(err, recipient){
 					if(err){
 						deferred.reject('Create Recipient failed with error ' + err.code + ' ' + err.message);
 					} else{
-						deferred.resolve(q.nbind(recipients.save, recipients)(recipient));
+						deferred.resolve('Successfully created Recipient');
 					}
 				});
 			return deferred.promise;
 		},
 		
-		createTransfer: function(req){
+		createTransfer: function(params){
 			var deferred = q.defer();
 			stripe.transfers.create({
-				  amount: req.body.amount*100, //amount in cents
+				  amount: params.amount*100, //amount in cents
 				  currency: config.stripe.currency,
-				  recipient: req.body.recipient,
-				  description: req.body.description
+				  recipient: params.recipient.split('#and#')[0].trim(),
+				  description: params.description
 				}, function(err, transfer) {
 					if(err){
 						deferred.reject('Create Transfer failed with error ' + err.code + ' ' + err.message);
 					} else{
+						transfer.name = params.recipient.split('#and#')[1].trim()
 						deferred.resolve(q.nbind(transfers.save, transfers)(transfer));
 					}
 				});
+			return deferred.promise;
+		},
+		
+		getRecipients: function(){
+			var deferred = q.defer();
+			stripe.recipients.list(function(err, recipients) {
+				if(err){
+					deferred.reject('Get recipients failed with error ' + err.code + ' ' + err.message);
+				} else {
+				  deferred.resolve(recipients.data);
+				}
+			});
 			return deferred.promise;
 		}
 }

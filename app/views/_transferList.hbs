@@ -8,22 +8,18 @@
         <tr>
             <th>Recipient</th>
             <th>Amount</th>
-            <th>date</th>
             <th>description</th>
         </tr>
         </thead>
         <tbody>
 
         {{#each transfers}}
-            <tr class="b-transferList__item" data-id="{{_id}}">
+            <tr class="b-transferList__item" data-id="{{id}}">
             <td>
-                {{recipient}}
+                {{name}}
             </td>
             <td>
                 {{amount}}
-            </td>
-            <td class="col-md-4">
-                {{date}}
             </td>
             <td>
                 {{description}}

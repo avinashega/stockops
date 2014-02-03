@@ -22,7 +22,8 @@
     "getconfig": "*",
     "agenda": "*",
     "aws-sdk": "*",
-    "stripe": "*"
+    "stripe": "*",
+    "timezone":"*"
   },
   "devDependencies": {
     "debug": "*"

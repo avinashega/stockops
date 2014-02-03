@@ -20,10 +20,10 @@
 								</div>
 								<div class="form-group col-md-6">
 									<label class="control-label">Recipient</label>
-									<div class="bfh-selectbox" data-name="plan">
+									<div class="bfh-selectbox" data-name="recipient">
 									<div data-value="">Select a Recipient</div>
 										{{#each recipients}}
-										<div data-value="{{id}}">{{name}}</div>
+										<div data-value="{{id}}#and#{{name}}">{{name}}</div>
 										{{/each}}
 									</div>
 								</div>

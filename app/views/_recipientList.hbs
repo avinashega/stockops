@@ -10,13 +10,12 @@
             <th>Type</th>
             <th>Email</th>
             <th>Description</th>
-            <th>Created on</th>
         </tr>
         </thead>
         <tbody>
 
         {{#each recipients}}
-            <tr class="b-recipientList__item" data-id="{{_id}}">
+            <tr class="b-recipientList__item" data-id="{{id}}">
             <td>
                 {{name}}
             </td>
@@ -28,9 +27,6 @@
             </td>
             <td>
                 {{description}}
-            </td>
-            <td>
-                {{created}}
             </td>
             </tr>
         {{/each}}

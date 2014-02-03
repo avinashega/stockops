@@ -12,7 +12,12 @@ module.exports = {
 			res.render('charges');
 		},
 		transfer: function(req, res){
-			res.render('transfer');
+			i.paymentService().getRecipients().then(function(data){
+				res.render('transfer', {recipients:data});
+			}).fail(function(err){
+				res.render('transfer');
+			}).done();
+			
 		},
 		transfers: function(req, res){
 			res.render('transfers');
@@ -50,38 +55,46 @@ module.exports = {
             }).fail(function(err){
             	console.log(err);
                 res.json(jsonResp.error(err));
-			})
+			});
 		},
 		
 		createTransfer: function(req, res){
 			i.transferService().createTransfer(req).then(function(transfer){
-				res.json({});
+				res.json(jsonResp.data('Transfer created successfully.'));
 			}).fail(function(err){
-				res.json({});
+				console.log(err);
+                res.json(jsonResp.error(err));
 			});
 		},
 		
 		getTransfers: function(req, res){
 			i.transferService().getTransfers().then(function(transfers){
-				res.json({});
-			}).fail(function(err){
-				res.json({});
+				return q.nbind(res.render, res)('_transferList', {transfers: transfers});
+			}).then(function (html) {
+                res.json(jsonResp.data(html));
+            }).fail(function(err){
+            	console.log(err);
+                res.json(jsonResp.error(err));
 			});
 		},
 		
 		createRecipient: function(req, res){
 			i.recipientService().createRecipient(req).then(function(recipient){
-				res.json({});
+				res.json(jsonResp.data('Recipient created successfully.'));
 			}).fail(function(err){
-				res.json({});
+				console.log(err);
+                res.json(jsonResp.error(err));
 			});
 		},
 		
 		getRecipients: function(req, res){
 			i.recipientService().getRecipients().then(function(recipients){
-				res.json({});
-			}).fail(function(err){
-				res.json({});
+				return q.nbind(res.render, res)('_recipientList', {recipients: recipients});
+			}).then(function (html) {
+                res.json(jsonResp.data(html));
+            }).fail(function(err){
+            	console.log(err);
+                res.json(jsonResp.error(err));
 			});
 		},
 		
