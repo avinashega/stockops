@@ -15,8 +15,8 @@
     "mongo":{
     	"username":"avinash",
     	"password":"avinash",
-    	"host":"localhost",
-    	"db":"stockops",
-    	"port":"27017"
+    	"host":"ds031329.mongolab.com",
+    	"db":"heroku_app21682252",
+    	"port":"31329"
     }
 }
