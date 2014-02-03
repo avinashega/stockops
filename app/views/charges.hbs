@@ -11,8 +11,37 @@
 					<div class="widget-content">
 						<div class="row">
 							<div class="col-md-12 b-chargeList" role="b-chargeList"
-								onclick="return {url: '/charges/list'};">
+								onclick="return {url: '/charges/list', captureUrl:'/charges/capture'};">
+								    <div class="alert alert-danger help-block b-chargeList__errorMessage"></div>
+                                    <div class="alert alert-success help-block b-chargeList__successMessage"><strong>Success!</strong> The charge has been captured.</div>
 								<div class="b-chargeList__list"></div>
+								<div class="modal fade b-chargeList__popup" id="reset">
+									<input type="hidden" name="id" class="b-chargeList__modalId" />
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-hidden="true">&times;</button>
+												<h4 class="modal-title">Confirm Capture</h4>
+											</div>
+											<div class="modal-body">
+												<div class="form-group">
+												<h4>Are you sure ?</h4>													
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">Cancel</button>
+												<button type="button"
+													class="btn btn-primary b-chargeList__modalCapture"
+													date-loading="Resetting...">Capture</button>
+											</div>
+										</div>
+										<!-- /.modal-content -->
+									</div>
+									<!-- /.modal-dialog -->
+								</div>
+								<!-- /.modal -->
 							</div>
 						</div>
 					</div>

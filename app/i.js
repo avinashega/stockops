@@ -1,5 +1,18 @@
 var m = require('underscore').memoize;
 
+function _formatErrors(errors) {
+    if (typeof errors === 'string') {
+        return errors;
+    } else if (errors instanceof Error) {
+        return 'System error';
+    } else {
+        var result = {};
+        errors.forEach(function (e) {
+            result[e.param] = e.msg;
+        });
+        return result;
+    }
+}
 
 module.exports = {
 
@@ -19,10 +32,23 @@ module.exports = {
     },
 
     
-    paymentService: function (deviceId, userAgent) {
-        return require('./services/payments');
-    }
+    paymentService: function () {
+        return require('./services/payment');
+    },
+    
+    chargeService: function () {
+        return require('./services/charges');
+    },
+    
+    recipientService: function () {
+        return require('./services/recipients');
+    },
+    
+    transferService: function () {
+        return require('./services/transfers');
+    },
 
+    
     jsonResponse: {
         data: function (data) {
             return {

@@ -11,5 +11,12 @@
     	"secretKey": "sk_test_wDdWz6paAu1IHKJywADrz6oU",
     	"publishableKey": "pk_test_RASuknKviBTKlwOgAuGqrBTP",
     	"currency":"usd"
+    },
+    "mongo":{
+    	"username":"avinash",
+    	"password":"avinash",
+    	"host":"localhost",
+    	"db":"stockops",
+    	"port":"27017"
     }
 }

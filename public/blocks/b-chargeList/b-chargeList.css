@@ -1,11 +1,15 @@
-.b-chargeList__addForm {
-    display: none;
-}
-
 .b-chargeList__addBlock_open .b-chargeList__addForm {
     display: block;
 }
 
 .b-chargeList__addBlock_open .b-chargeList__addButton{
     display: none;
+}
+.b-chargeList__successMessage,
+.b-chargeList__errorMessage{
+    display: none;
+}
+.b-chargeList_success .b-chargeList__successMessage,
+.b-chargeList_error .b-chargeList__errorMessage{
+    display: block;
 }

@@ -8,25 +8,56 @@ var agenda = i.agenda();
 var stripe = require("stripe")(config.stripe.secretKey);
 
 module.exports = {
-		create: function(req){
-			var amount = req.body.amount*100;//amount in cents needs to be passed to stripe.
+		createCharge: function(params){
+			var amount = parseInt(params.amount)*100;//amount in cents needs to be passed to stripe.
+			var capture = false;
+			var card = {};
+			//card information
+			card.number = params.cardNumber.replace(/ /g, '');
+			card.exp_month = params.expiry.split('/')[0].trim();
+			card.exp_year = params.expiry.split('/')[1].trim();
+			card.cvc = params.cvc;
+			//billing address
+			card.name = params.name;
+			card.address_line1 = params.addressLine1;
+			card.address_line2 = params.addressLine2;
+			card.address_city = params.city;
+			card.address_zip = params.zip;
+			card.address_state = params.state;
+			card.address_country = params.country;
 			var deferred = q.defer();
 			stripe.charges.create({
 				  amount: amount,
 				  currency: config.stripe.currency,
-				  card: req.body.token, // obtained with Stripe.js
-				  capture: req.body.capture
+				  card: card, // obtained with Stripe.js
+				  capture: capture
 				}, function(err, charge){
 					if(err){
 						deferred.reject('Create Charge failed with error ' + err.code + ' ' + err.message);
 					} else{
-						deferred.resolve(q.nbind(charges.save, charges)(charge).then(function(charge){
-							var job = agenda.create('capture', {id: charge.id});
-	                        if (Date.now() < req.body.when) {
-	                            job.attrs.nextRunAt = when;
-	                        }
-	                        q.nbind(job.save, job)();
-						}));
+						charge.s_address_line1 = params.s_addressLine1;
+						charge.s_address_line2 = params.s_addressLine2;
+						charge.s_address_city = params.s_city;
+						charge.s_address_zip = params.s_zip;
+						charge.s_address_state = params.s_state;
+						charge.s_address_country = params.s_country;
+						charge.product = params.product;
+						charge.email = params.email;
+						charge.phoneNumber = params.phoneNumber;
+						deferred.resolve(q.nbind(charges.save, charges)(charge));
+					}
+				});
+			return deferred.promise;
+		},
+		
+		captureCharge: function(id){
+			console.log(id);
+			var deferred = q.defer();
+			stripe.charges.capture(id, function(err, charge){
+					if(err){
+						deferred.reject('Capture Charge failed with error ' + err.code + ' ' + err.message);
+					} else{
+						deferred.resolve(q.nbind(charges.updateCapture, charges)(charge));
 					}
 				});
 			return deferred.promise;
