@@ -36,6 +36,7 @@
                         }
                     })
                     .then(this._proxy(function () {
+                    	this._reload();
                         this.$popup.modal('hide');
                     }))
                     .done;                
