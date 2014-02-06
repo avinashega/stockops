@@ -12,6 +12,7 @@
             <th>email</th>
             <th>phone</th>
             <th>product</th>
+            <th>Comments</th>
             <th>Capture</th>
         </tr>
         </thead>
@@ -36,6 +37,9 @@
             </td>
             <td>
                 {{product}}
+            </td>
+            <td>
+                {{comment}}
             </td>
             {{#unless captured}}
             <td><button class="btn btn-sm btn-success b-chargeList__capture" type="button">Capture</button></td>

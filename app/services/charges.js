@@ -14,7 +14,8 @@ module.exports = {
 
 	        req.assert('email', 'Valid email required').isEmail();
 	        req.assert('product', 'Please select a product').notEmpty();
-	        
+	        req.assert('capture', 'Please select capture/authorize').notEmpty();
+	        req.assert('amount', 'Invalid amount').regex('^[0-9]+(\.[0-9]{1,2})?$');
 	        return q.fcall(function () {
 	            var errors = req.validationErrors();
 	            if (errors) {

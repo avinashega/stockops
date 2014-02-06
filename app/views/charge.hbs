@@ -10,49 +10,60 @@
 						<h3>Capture Charges</h3>
 					</div>
 					<div class="widget-content">
-						<div class="row">
+						<div class="row" style="padding: 10px;">
 							<form class="b-chargeList__addForm" action="/charges/add"
 								method="post" role="b-ajaxForm" autocomplete="off">
 								<div class="form-group col-md-6">
-                                    <label class="control-label">Amount</label> 
-                                    <input type="number" name="amount" placeholder="amount in USD"
-                                        autofocus required class="form-control">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label class="control-label">Name</label> 
-                                    <input type="text" name="name" placeholder="Cardholder's name(optional)"
-                                        autofocus class="form-control">
-                                </div>
-                                <div class="clearfix"></div>
-								<h4>Card Information</h4>
-								<div class="form-group col-md-6">
-									<label class="control-label">Card number
-										(Visa/Mastercard/Amex)</label> <input type="text" name="cardNumber"
-										autofocus required class="form-control credit_card_number">
+									<input type="text" name="amount" placeholder="amount in USD"
+										autofocus required class="form-control">
 								</div>
 								<div class="form-group col-md-6">
-									<label class="control-label">CVC</label> <input type="text"
-										name="cvc" required class="form-control credit_card_cvc">
+									<input type="text" name="name"
+										placeholder="Cardholder's name(optional)" autofocus
+										class="form-control">
 								</div>
 								<div class="clearfix"></div>
 								<div class="form-group col-md-6">
-									<label class="control-label">Expiry</label> <input type="text"
-										name="expiry" required class="form-control credit_card_expiry"
+									<div class="bfh-selectbox" data-name="capture" id="capture"
+										data-value="">
+										<div data-value="">Select Capture Type</div>
+										<div data-value="authorize">Authorize</div>
+										<div data-value="capture">Capture</div>
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<textarea name="comment" rows="4" cols="50"
+										placeholder="Optional comments about the transaction"
+										autofocus class="form-control"></textarea>
+								</div>
+								<div class="clearfix"></div>
+								<h4>Card Information</h4>
+								<div class="form-group col-md-6">
+									<input type="text" name="cardNumber" autofocus required
+										class="form-control credit_card_number"
+										placeholder="Card number (Visa/Mastercard/Amex)">
+								</div>
+								<div class="form-group col-md-6">
+									<input type="text" name="cvc" required
+										class="form-control credit_card_cvc" placeholder="cvc">
+								</div>
+								<div class="clearfix"></div>
+								<div class="form-group col-md-6">
+									<input type="text" name="expiry" required
+										class="form-control credit_card_expiry"
 										placeholder="Expiry: MM/YYYY">
 								</div>
 								<div class="form-group col-md-6">
-									<label class="control-label">Phone number</label> <input
-										type="text" name="phoneNumber" required
+									<input type="text" name="phoneNumber" required
 										class="form-control phone_number" placeholder="Phone number">
 								</div>
 								<div class="clearfix"></div>
 								<div class="form-group col-md-6">
-									<label class="control-label">Email</label> <input type="email"
-										name="email" required class="form-control"
-										placeholder="xyz@example.com">
+									<input type="email" name="email" required class="form-control"
+										placeholder="Email">
 								</div>
 								<div class="form-group col-md-6">
-									<label class="control-label">Select a Product</label>
+
 									<div class="bfh-selectbox" data-name="product" id="product"
 										data-value="">
 										<div data-value="">Select a Product...</div>
@@ -65,62 +76,64 @@
 								<div class="clearfix"></div>
 								<h4>Billing Info</h4>
 								<div class="form-group col-md-6">
-									<label class="control-label">Address Line 1</label> <input
-										type="text" name="addressLine1" class="form-control"
-										placeholder="optional">
+									<input type="text" name="addressLine1" class="form-control"
+										placeholder="Address Line 1 (optional)">
 								</div>
 								<div class="form-group col-md-6">
-									<label class="control-label">Address Line 2</label> <input
-										type="text" name="addressLine2" class="form-control"
-										placeholder="optional">
+									<input type="text" name="addressLine2" class="form-control"
+										placeholder="Address Line 2 (optional)">
 								</div>
 								<div class="clearfix"></div>
 								<div class="form-group col-md-6">
-									<label class="control-label">City</label> <input type="text"
-										name="city" class="form-control" placeholder="optional">
+									<input type="text" name="city" class="form-control"
+										placeholder="City (optional)">
 								</div>
 								<div class="form-group col-md-6">
-									<label class="control-label">State</label> <input type="text"
-										name="state" class="form-control" placeholder="optional">
-								</div>
-								<div class="clearfix"></div>
-								<div class="form-group col-md-6">
-									<label class="control-label">Zip</label> <input type="text"
-										name="zip" class="form-control" placeholder="optional">
-								</div>
-								<div class="form-group col-md-6">
-									<label class="control-label">Country</label> <input type="text"
-										name="country" class="form-control" placeholder="optional">
+									<input type="text" name="state" class="form-control"
+										placeholder="State (optional)">
 								</div>
 								<div class="clearfix"></div>
-								<h4>Shipping Info</h4>
 								<div class="form-group col-md-6">
-									<label class="control-label">Address Line 1</label> <input
+									<input type="text" name="zip" class="form-control"
+										placeholder="Zip (optional)">
+								</div>
+								<div class="form-group col-md-6">
+									<input type="text" name="country" class="form-control"
+										placeholder="Country (optional)">
+								</div>
+								<div class="clearfix"></div>
+								<span class="pull-left"><h4>Shipping Info</h4></span>
+                                <label class="input-group pull-left" style="margin:10px 0 0 30px;">
+                                    <input type="checkbox" name="same" value='same'> Same as Billing address
+                                </label>
+                                <div class="clearfix"></div>
+								<div class="form-group col-md-6">
+									<input
 										type="text" name="s_addressLine1" class="form-control"
-										placeholder="optional">
+										placeholder="Address Line 1 (optional)">
 								</div>
 								<div class="form-group col-md-6">
-									<label class="control-label">Address Line 2</label> <input
+									<input
 										type="text" name="s_addressLine2" class="form-control"
-										placeholder="optional">
+										placeholder="Address Line 2 (optional)">
 								</div>
 								<div class="clearfix"></div>
 								<div class="form-group col-md-6">
-									<label class="control-label">City</label> <input type="text"
-										name="s_city" class="form-control" placeholder="optional">
+									<input type="text"
+										name="s_city" class="form-control" placeholder="City (optional)">
 								</div>
 								<div class="form-group col-md-6">
-									<label class="control-label">State</label> <input type="text"
-										name="s_state" class="form-control" placeholder="optional">
+									<input type="text"
+										name="s_state" class="form-control" placeholder="State (optional)">
 								</div>
 								<div class="clearfix"></div>
 								<div class="form-group col-md-6">
-									<label class="control-label">Zip</label> <input type="text"
-										name="s_zip" class="form-control" placeholder="optional">
+									<input type="text"
+										name="s_zip" class="form-control" placeholder="Zip (optional)">
 								</div>
 								<div class="form-group col-md-6">
-									<label class="control-label">Country</label> <input type="text"
-										name="s_country" class="form-control" placeholder="optional">
+									<input type="text"
+										name="s_country" class="form-control" placeholder="Country (optional)">
 								</div>
 								<div class="clearfix"></div>
 								<button type="submit"
