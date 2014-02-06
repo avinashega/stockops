@@ -35,13 +35,13 @@ console.log('3');
     app.use(expressValidator());
 console.log('4');
     app.use(express.methodOverride());
-    /*app.use(function(req,resp,next){
+    app.use(function(req,resp,next){
         resp.setHeader('Strict-Transport-Security', 'max-age=8640000; includeSubDomains');
         if (req.headers['x-forwarded-proto'] !== 'https') {
             return resp.redirect(301, 'https://' + req.headers.host + '/');
         }
         next();
-    });*/
+    });
     console.log('start router');
     app.use(app.router);
 
